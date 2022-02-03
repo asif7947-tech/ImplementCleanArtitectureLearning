@@ -1,4 +1,4 @@
-package com.gaur.mealsearch.common
+package come.voice_data.implementcleanartitecture.common
 
 
 sealed class Resource<T>(val data: T? = null, val message: String? = null) {

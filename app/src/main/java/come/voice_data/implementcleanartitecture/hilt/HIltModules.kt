@@ -6,6 +6,7 @@ import com.gaur.mealsearch.domain.repository.MealSearchRepository
 import come.voice_data.implementcleanartitecture.data_layer.remote.MealSearchAPI
 import come.voice_data.implementcleanartitecture.data_layer.repository.MealDetailsRepositoryImpl
 import come.voice_data.implementcleanartitecture.data_layer.repository.MealSearchRepistoryImpl
+import come.voice_data.implementcleanartitecture.presentation_Layer.meal_search.MealSearchAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,8 +37,10 @@ object HIltModules {
     }
 
     @Provides
-    fun provideMealDetails(searchMealSearchAPI: MealSearchAPI): MealDetailsRepository {
+    fun provideMealDetailsRepository(searchMealSearchAPI: MealSearchAPI): MealDetailsRepository {
         return MealDetailsRepositoryImpl(searchMealSearchAPI)
     }
+
+
 
 }
