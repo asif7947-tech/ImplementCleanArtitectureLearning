@@ -1,8 +1,9 @@
-package come.voice_data.implementcleanartitecture
+package come.voice_data.implementcleanartitecture.presentation_Layer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
+import come.voice_data.implementcleanartitecture.R
 import come.voice_data.implementcleanartitecture.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

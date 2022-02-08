@@ -1,6 +1,7 @@
 package come.voice_data.implementcleanartitecture.presentation_Layer.meal_search
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +13,14 @@ import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import come.voice_data.implementcleanartitecture.R
 import come.voice_data.implementcleanartitecture.common.Resource
+import come.voice_data.implementcleanartitecture.common.meal_data
 import come.voice_data.implementcleanartitecture.databinding.FragmentMealSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -22,7 +28,7 @@ import javax.inject.Named
 @AndroidEntryPoint
 class MealSearchFragment : Fragment() {
 
-
+    private  val TAG = "MealSearchFragment"
     @Inject
     @Named("fragmentMealSearchAdapter")
     lateinit var searchAdapter: MealSearchAdapter
@@ -98,9 +104,19 @@ class MealSearchFragment : Fragment() {
 
         searchAdapter.itemClickListener {
 
-            viewModel.my_Data?.invoke(it)
-
+            meal_data=it
             findNavController().navigate(R.id.action_mealSearchFragment_to_mealDetailsFragment)
+
+
+            CoroutineScope(Dispatchers.IO).launch {
+                Log.e(TAG, "onViewCreated: data  ${it.id}", )
+                Log.e(TAG, "onViewCreated: data  ${it.name}", )
+                delay(3000)
+                Log.e(TAG, "onViewCreated: data  ${it.id}", )
+                Log.e(TAG, "onViewCreated: data  ${it.name}", )
+                viewModel.my_Data?.invoke(it)
+            }
+
         }
 
     }
